@@ -57,5 +57,17 @@
         }
 
         internal Func<Type, string> AnonymousTypeNameFactory { get; private set; }
+
+        /// <summary>
+        /// Formats constant expression with the given <paramref name="constantFormatter"/> instead of default formatting.s
+        /// </summary>
+        /// <param name="constantFormatter">The constant formatter to customize constants output.</param>
+        public TranslationSettings FormatConstantsWith(Func<object, string> constantFormatter)
+        {
+            ConstantFormatter = constantFormatter;
+            return this;
+        }
+
+        internal Func<object, string> ConstantFormatter { get; private set; }
     }
 }

@@ -26,6 +26,11 @@ namespace AgileObjects.ReadableExpressions.Translators
         {
             var constant = (ConstantExpression)expression;
 
+            if (context.Settings.ConstantFormatter != null)
+            {
+                return context.Settings.ConstantFormatter(constant.Value);
+            }
+
             if (constant.Value == null)
             {
                 return "null";
